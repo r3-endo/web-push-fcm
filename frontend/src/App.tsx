@@ -76,6 +76,13 @@ function App() {
       <button onClick={requestTokenToServer}>トークン登録</button>
       <button onClick={requestPermission}>通知許可</button>
       <button onClick={deleteTokenFromFirebase}>トークン削除</button>
+      {canPushNotification ? (
+        <>
+          <div>Push通知対応</div>
+        </>
+      ) : (
+        <>Push通知非対応</>
+      )}
     </div>
   );
 }
