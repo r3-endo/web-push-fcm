@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { firebaseConfig, vapidKey } from "./config";
@@ -10,6 +10,7 @@ const messaging = getMessaging();
 
 function App() {
   console.log(firebaseConfig);
+  const [currentToken, setCurrentToken] = useState("");
   useEffect(() => {
     const registerServiceWorker = async () => {
       try {
@@ -37,6 +38,7 @@ function App() {
       const currentToken = await getToken(messaging, {
         vapidKey: vapidKey,
       });
+      setCurrentToken(currentToken);
 
       if (currentToken) {
         console.log("Current Token for client", currentToken);
@@ -79,6 +81,7 @@ function App() {
       {canPushNotification ? (
         <>
           <div>Push通知対応</div>
+          <div>{currentToken}</div>
         </>
       ) : (
         <>Push通知非対応</>
