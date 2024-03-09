@@ -1,8 +1,15 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import { firebaseConfig } from "./config";
+import { initializeApp } from "firebase/app";
+import { getMessaging } from "firebase/messaging";
+
+initializeApp(firebaseConfig);
+const messaging = getMessaging();
 
 function App() {
+  console.log(firebaseConfig.apiKey);
   return (
     <div className="App">
       <header className="App-header">
