@@ -43,7 +43,7 @@ export const Header = ({
       <div>
         <>
           <Button
-            primary={false}
+            primary={true}
             size="small"
             onClick={onRequestTokenToFirebase}
             label="トークン取得"
@@ -54,12 +54,12 @@ export const Header = ({
             onClick={onRequestPermission}
             label="通知許可"
           ></Button>
-          <Button
+          {/* <Button
             primary={true}
             size="small"
             onClick={onDeleteTokenFromFirebase}
             label="Token削除"
-          ></Button>
+          ></Button> */}
         </>
       </div>
     </div>
