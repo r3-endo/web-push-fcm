@@ -85,6 +85,7 @@ function App() {
   return (
     <div className="App">
       <Header
+        onRequestTokenToFirebase={requestTokenToServer}
         onRequestPermission={requestPermission}
         onDeleteTokenFromFirebase={deleteTokenFromFirebase}
       ></Header>

@@ -4,11 +4,13 @@ import "./Header.css";
 import { Button } from "../../atoms/button/Button";
 
 interface HeaderProps {
+  onRequestTokenToFirebase: () => void;
   onRequestPermission: () => void;
   onDeleteTokenFromFirebase: () => void;
 }
 
 export const Header = ({
+  onRequestTokenToFirebase,
   onRequestPermission,
   onDeleteTokenFromFirebase,
 }: HeaderProps) => (
@@ -36,10 +38,16 @@ export const Header = ({
             />
           </g>
         </svg>
-        <h1>web-app-push</h1>
+        <h1>web-push</h1>
       </div>
       <div>
         <>
+          <Button
+            primary={false}
+            size="small"
+            onClick={onRequestTokenToFirebase}
+            label="トークン取得"
+          ></Button>
           <Button
             primary={false}
             size="small"
