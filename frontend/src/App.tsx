@@ -10,7 +10,9 @@ initializeApp(firebaseConfig);
 const messaging = getMessaging();
 
 function App() {
-  const [currentToken, setCurrentToken] = useState("");
+  const [currentToken, setCurrentToken] = useState(
+    "トークン情報取得中。しばらくお待ちください",
+  );
   useEffect(() => {
     setUp();
     // eslint-disable-next-line react-hooks/exhaustive-deps
