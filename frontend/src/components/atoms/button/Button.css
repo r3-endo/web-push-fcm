@@ -1,0 +1,35 @@
+.storybook-button {
+  font-weight: 700;
+  border: 0;
+  border-radius: 3em;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1;
+
+}
+
+.storybook-button--primary {
+  color: #ffffff;
+  background-color: #1ea7fd;
+}
+
+.storybook-button-secondary {
+  background-color: transparent;
+  color: #333;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+}
+
+.storybook-button--small {
+  font-size: 12px;
+  padding: 10px 10px;
+}
+
+.storybook-button--medium {
+  font-size: 14px;
+  padding: 11px 20px;
+}
+
+.storybook-button--large {
+  font-size: 16px;
+  padding: 12px 24px;
+}

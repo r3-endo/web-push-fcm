@@ -1,0 +1,9 @@
+.card-container {
+  background-color: #fff;
+  box-shadow: #ddd 0 0 4px 2px;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 20px auto;
+  width: 50%;
+  overflow-wrap: break-word;
+}

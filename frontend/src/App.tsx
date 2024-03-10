@@ -1,33 +1,40 @@
 import React, { useEffect, useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { firebaseConfig, vapidKey } from "./config";
 import { initializeApp } from "firebase/app";
 import { deleteToken, getMessaging, getToken } from "firebase/messaging";
+import { Header } from "./components/molecules/layout/Header";
+import { Card } from "./components/atoms/card/Card";
 
 initializeApp(firebaseConfig);
 const messaging = getMessaging();
 
 function App() {
-  console.log(firebaseConfig);
   const [currentToken, setCurrentToken] = useState("");
   useEffect(() => {
-    const registerServiceWorker = async () => {
-      try {
-        if ("serviceWorker" in navigator && "PushManager" in window) {
-          const swReg = await navigator.serviceWorker.register(
-            "../firebase-messaging-sw.js",
-          );
-          console.log("ServiceWorkerを登録しました", swReg);
-        } else {
-          console.log("すでにServiceWorkerが登録済みです");
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    registerServiceWorker();
+    setUp();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const setUp = async () => {
+    await registerServiceWorker();
+    await requestTokenToServer();
+  };
+
+  const registerServiceWorker = async () => {
+    try {
+      if ("serviceWorker" in navigator && "PushManager" in window) {
+        const swReg = await navigator.serviceWorker.register(
+          "../firebase-messaging-sw.js",
+        );
+        console.log("ServiceWorkerを登録しました", swReg);
+      } else {
+        console.log("すでにServiceWorkerが登録済みです");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const canPushNotification =
     "serviceWorker" in navigator && "PushManager" in window;
@@ -75,13 +82,17 @@ function App() {
   };
   return (
     <div className="App">
-      <button onClick={requestTokenToServer}>トークン登録</button>
-      <button onClick={requestPermission}>通知許可</button>
-      <button onClick={deleteTokenFromFirebase}>トークン削除</button>
+      <Header
+        onRequestPermission={requestPermission}
+        onDeleteTokenFromFirebase={deleteTokenFromFirebase}
+      ></Header>
       {canPushNotification ? (
         <>
-          <div>Push通知対応</div>
-          <div>{currentToken}</div>
+          <div className="text">Push通知対応</div>
+          <Card>
+            <h3>トークン情報</h3>
+            <div>{currentToken}</div>
+          </Card>
         </>
       ) : (
         <>Push通知非対応</>
