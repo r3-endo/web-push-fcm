@@ -1,0 +1,6 @@
+POST http://localhost:3030/api/send-firebase-message HTTP/1.1
+content-type: application/json
+
+{
+  "token":"e69eu1ZEK9YXJ6krV20JqW:APA91bFEBMR3McqraA-ShkjaXwiM-XndkZvv33qPhZ7K5S8LnBaikVJQHvrMnu8LaJXFakvA92wfhv6z0SNK0pX1XiNq0Dr3OzHTziQvz7UAsZ93J8mRyWfBr9jv8kQC3VRJJYdCHK20"
+}
